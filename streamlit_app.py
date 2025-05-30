@@ -52,6 +52,52 @@ st.markdown("""
     .stMultiSelect > div > div > div {
         background-color: #f8f9fa;
     }
+    
+    /* ESTILOS PARA ABAS MAIS EVIDENTES */
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 8px;
+        background-color: #f8f9fa;
+        padding: 8px;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .stTabs [data-baseweb="tab"] {
+        height: 60px;
+        padding: 12px 24px;
+        background-color: white;
+        border-radius: 8px;
+        border: 2px solid #e9ecef;
+        font-weight: 600;
+        font-size: 16px;
+        transition: all 0.3s ease;
+    }
+    
+    .stTabs [aria-selected="true"] {
+        background: linear-gradient(135deg, #4A90E2 0%, #FF6B6B 100%);
+        color: white !important;
+        border: 2px solid #4A90E2;
+        box-shadow: 0 4px 12px rgba(74,144,226,0.3);
+        transform: translateY(-2px);
+    }
+    
+    .stTabs [data-baseweb="tab"]:hover {
+        background-color: #f0f8ff;
+        border-color: #4A90E2;
+        transform: translateY(-1px);
+        box-shadow: 0 2px 8px rgba(74,144,226,0.2);
+    }
+    
+    .tab-header {
+        background: linear-gradient(135deg, #4A90E2 0%, #FF6B6B 100%);
+        color: white;
+        padding: 1rem;
+        border-radius: 10px;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        font-size: 1.2em;
+        font-weight: bold;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -429,16 +475,23 @@ def main():
     
     st.header("📈 Análise Visual Avançada")
     
-    # Abas para diferentes análises
+    # Abas para diferentes análises - NOMES MAIS EVIDENTES
     tab1, tab2, tab3, tab4, tab5 = st.tabs([
-        "🎯 TAM & Oportunidades", 
-        "💰 Análise Financeira", 
-        "🔄 Matriz Estratégica",
-        "🏆 Competição", 
-        "🔮 Simulações"
+        "🎯 MERCADO & OPORTUNIDADES", 
+        "💰 ANÁLISE FINANCEIRA", 
+        "🔄 MATRIZ ESTRATÉGICA",
+        "🏆 COMPETIÇÃO & MARKET SHARE", 
+        "🔮 SIMULAÇÕES AVANÇADAS"
     ])
     
     with tab1:
+        # Cabeçalho da aba
+        st.markdown("""
+        <div class="tab-header">
+            🎯 MERCADO & OPORTUNIDADES
+        </div>
+        """, unsafe_allow_html=True)
+        
         col1, col2 = st.columns(2)
         
         with col1:
@@ -484,6 +537,13 @@ def main():
             st.plotly_chart(fig_correlation, use_container_width=True)
     
     with tab2:
+        # Cabeçalho da aba
+        st.markdown("""
+        <div class="tab-header">
+            �� ANÁLISE FINANCEIRA
+        </div>
+        """, unsafe_allow_html=True)
+        
         col1, col2 = st.columns(2)
         
         with col1:
@@ -538,6 +598,13 @@ def main():
         )
     
     with tab3:
+        # Cabeçalho da aba
+        st.markdown("""
+        <div class="tab-header">
+            🔄 MATRIZ ESTRATÉGICA: ROI vs COMPLEXIDADE
+        </div>
+        """, unsafe_allow_html=True)
+        
         # Matriz estratégica avançada
         fig_matrix = create_advanced_roi_matrix(df_filtered)
         st.plotly_chart(fig_matrix, use_container_width=True)
@@ -590,6 +657,13 @@ def main():
             """, unsafe_allow_html=True)
     
     with tab4:
+        # Cabeçalho da aba
+        st.markdown("""
+        <div class="tab-header">
+            🏆 ANÁLISE COMPETITIVA & POSICIONAMENTO DE MERCADO
+        </div>
+        """, unsafe_allow_html=True)
+        
         # Análise competitiva
         fig_comp = create_competitive_landscape(df_competitors)
         st.plotly_chart(fig_comp, use_container_width=True)
@@ -634,6 +708,13 @@ def main():
             st.plotly_chart(fig_efficiency, use_container_width=True)
     
     with tab5:
+        # Cabeçalho da aba
+        st.markdown("""
+        <div class="tab-header">
+            🔮 SIMULAÇÕES AVANÇADAS: MONTE CARLO & OTIMIZAÇÃO
+        </div>
+        """, unsafe_allow_html=True)
+        
         # Análise de sensibilidade
         col1, col2 = st.columns(2)
         
