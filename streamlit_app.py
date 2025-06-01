@@ -824,7 +824,7 @@ def main():
     # SEÇÃO DE INSIGHTS E RECOMENDAÇÕES
     # ========================================================================================
     
-    st.header("🧠 Insights Inteligentes e Recomendações")
+    st.header("🧠 Insights e Recomendações")
     
     col1, col2 = st.columns(2)
     
