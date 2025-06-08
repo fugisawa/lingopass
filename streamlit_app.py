@@ -518,7 +518,7 @@ def main():
         # Cabeçalho da aba
         st.markdown("""
         <div class="tab-header">
-            �� ANÁLISE FINANCEIRA
+            💰 ANÁLISE FINANCEIRA
         </div>
         """, unsafe_allow_html=True)
         
