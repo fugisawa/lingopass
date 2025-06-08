@@ -37,8 +37,9 @@ env.bak/
 venv.bak/
 
 # Streamlit
-.streamlit/
 *.pyc
+# Include .streamlit/config.toml for deployment
+!.streamlit/config.toml
 
 # IDE and Editor files
 .vscode/

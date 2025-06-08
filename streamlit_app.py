@@ -4,7 +4,7 @@ import plotly.express as px
 from plotly.subplots import make_subplots
 import pandas as pd
 from pathlib import Path
-import ast
+# ast import removed - no longer needed for data loading
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -776,7 +776,7 @@ def add_accessibility_attrs(fig, title, description=""):
 # DADOS ESTRUTURADOS (Baseados no relatório original)
 # ========================================================================================
 
-@st.cache_data(hash_funcs={list: lambda x: str(x)})  # Handle unhashable lists
+@st.cache_data(ttl=3600)  # Cache for 1 hour, no hash functions needed
 def load_data():
     """Carrega e estrutura todos os dados do relatório LingoApp"""
     try:
@@ -793,14 +793,13 @@ def load_data():
         df_languages['ROI_Ano2_K'] = df_languages['Ano2_Revenue_K'] - df_languages['Investimento_K']
         df_languages['Revenue_Growth'] = (df_languages['Ano2_Revenue_K'] / df_languages['Ano1_Revenue_K'] - 1) * 100
 
-        # Dados de fases de rollout - convert string lists to actual lists carefully
+        # Dados de fases de rollout - keep as strings to avoid hashing issues
         df_phases = pd.read_csv(data_dir / "phases.csv")
         df_phases.rename(columns={
             'Usuarios_Projetados': 'Usuários_Projetados'
         }, inplace=True)
-        # Convert string representation of lists to actual lists
-        df_phases['Idiomas_Lista'] = df_phases['Idiomas'].apply(ast.literal_eval)
-        df_phases['Idiomas_String'] = df_phases['Idiomas']  # Keep string version for caching
+        # Keep original string format to avoid unhashable list issues
+        # Lists will be parsed when needed in specific functions
 
         # Análise competitiva
         df_competitors = pd.read_csv(data_dir / "competitors.csv")
