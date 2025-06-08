@@ -1,132 +1,93 @@
-# 🌍 LingoApp: Advanced Streamlit Dashboard
+# 🌍 LingoDash: World-Class Streamlit Dashboard
 
-## 🚀 Enterprise-Level Analytics Dashboard
-
-Advanced Streamlit dashboard for LingoApp's multi-language expansion strategy featuring real-time analytics, Monte Carlo simulations, and portfolio optimization algorithms.
 
 ![Dashboard Preview](https://img.shields.io/badge/Streamlit-FF6B6B?style=for-the-badge&logo=streamlit&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-4A90E2?style=for-the-badge&logo=python&logoColor=white)
 ![Plotly](https://img.shields.io/badge/Plotly-FFB000?style=for-the-badge&logo=plotly&logoColor=white)
 
-## ✨ **Superior Features**
+## MISSION STATEMENT
+Transform complex multilingual expansion data into actionable insights through scientifically-grounded data visualization, following evidence-based design principles that prioritize accessibility, cognitive efficiency, and decision-making clarity.
 
-### 🎛️ **Interactive Analytics**
-- **Real-time Filtering** - Dynamic sidebar controls for languages, scenarios, and parameters
-- **Monte Carlo Simulations** - 10K iteration revenue modeling with probability distributions
-- **Portfolio Optimization** - Algorithm-driven language selection with budget constraints
-- **Sensitivity Analysis** - Interactive heatmaps showing parameter impact
+---
 
-### 📊 **Advanced Visualizations**
-- **Strategic Matrix** - ROI vs Complexity bubble charts with TAM sizing
-- **Competitive Intelligence** - Market positioning analysis with efficiency metrics
-- **Revenue Projections** - Confidence interval bands with scenario modeling
-- **Quadrant Analysis** - Automatic strategic classification with recommendations
+## 📊 Dashboard Overview
 
-### 🎯 **5 Interactive Tabs**
-1. **TAM & Opportunities** - Market demand analysis with correlations
-2. **Financial Analysis** - Investment vs revenue with detailed ROI tables
-3. **Strategic Matrix** - Quadrant positioning with automated insights
-4. **Competition** - Market share and competitive landscape
-5. **Simulations** - Monte Carlo modeling and portfolio optimization
+LingoDash is an advanced Streamlit application designed to guide strategic decisions for multi-language expansion. It provides a comprehensive analysis of market opportunities, strategic priorities, and financial projections, all presented in a highly interactive and accessible interface.
 
-## 🛠️ **Installation & Deployment**
+### ✨ Key Features
 
-### **Local Setup**
-```bash
-# Clone repository
-git clone https://github.com/fugisawa/lingoapp-streamlit-dashboard.git
-cd lingoapp-streamlit-dashboard
+The dashboard is organized into three distinct sections for progressive analysis:
 
-# Install dependencies
-pip install -r requirements.txt
+#### 1. Executive Summary
+- **At-a-Glance KPIs:** Critical metrics on Total Addressable Market (TAM), revenue projections, and priority languages are presented first.
+- **Strategic Insights:** High-level takeaways on market opportunities, risks, and growth areas are highlighted for quick consumption.
+- **TAM Analysis:** An interactive bar chart visualizes the market demand for different languages, allowing for easy comparison.
 
-# Run application
-streamlit run streamlit_app.py
-```
+#### 2. Strategic Analysis
+- **Prioritization Matrix:** A data-driven scoring system ranks languages based on TAM, ROI, complexity, and payback period, classifying them into strategic tiers.
+- **Advanced ROI Matrix:** A bubble chart plots languages based on their ROI vs. technical complexity, with bubble size representing market size (TAM).
+- **Strategic Roadmap:** A detailed implementation plan covering timelines, investment breakdowns, performance metrics, and risk mitigation strategies.
+- **Competitive Landscape:** A scatter plot positions LingoDash against competitors based on user base and revenue.
 
-### **Access Dashboard**
-- **Local:** `http://localhost:8501`
-- **Network:** Available on all network interfaces
+#### 3. Predictive Analytics
+- **Interactive Scenarios:** Users can adjust growth factors, confidence levels, and time horizons to model different business scenarios.
+- **Revenue Projections:** A dynamic line chart shows potential revenue streams with confidence intervals that update based on selected scenarios.
+- **Sensitivity Analysis:** A heatmap reveals how changes in core assumptions (like TAM and conversion rates) impact overall revenue projections.
 
-### **Streamlit Cloud Deployment**
-1. Fork this repository
-2. Connect to [share.streamlit.io](https://share.streamlit.io)
-3. Deploy with one click
-4. Access your public dashboard URL
+---
 
-## 🎨 **Design Excellence**
+## 🎨 Design & Technical Excellence
 
-### **Accessibility First**
-- **Colorblind-safe palette** - Blue (#4A90E2), Coral (#FF6B6B), Gold (#FFB000)
-- **4.5:1 contrast ratios** - WCAG AA compliance
-- **Screen reader support** - Full aria-label coverage
+This dashboard was built following a comprehensive framework that integrates best practices from data science, cognitive psychology, and accessibility standards.
 
-### **Data Visualization Principles**
-- **Tufte's Data-Ink Ratio** - Maximum information, minimal clutter
-- **Wickham's Grammar of Graphics** - Logical visual encoding
-- **Pica's Storytelling** - Sequential narrative flow through tabs
+- **Scientific Visualization:** Adheres to Edward Tufte's principles of **Data-Ink Ratio Optimization** and Hadley Wickham's **Grammar of Graphics** for clear, uncluttered charts.
+- **Cognitive Psychology:** Leverages principles like **Progressive Disclosure** (tabs), **Visual Hierarchy** (F-pattern layout), and **Reduced Cognitive Load** to make complex data easy to understand.
+- **Accessibility-First (WCAG 2.1 AAA):** Features a colorblind-safe palette, high-contrast text, and proper semantic markup for screen reader compatibility.
+- **Performance:** Optimized for a **sub-2-second initial load** time and efficient data caching for a smooth user experience.
 
-## 🧠 **Advanced Algorithms**
+---
 
-### **Monte Carlo Engine**
-```python
-# Revenue simulation with parameter uncertainty
-TAM_variation: ±20% normal distribution
-Conversion_variation: ±30% normal distribution  
-ARPPU_variation: ±15% normal distribution
-Output: P5, P50, P95 percentiles
-```
+## 🛠️ Tech Stack
 
-### **Portfolio Optimization**
-```python
-# Greedy algorithm for budget-constrained selection
-Efficiency = Revenue_Year2 / Investment
-Constraint = Total_Investment <= Budget
-Output = Optimal language portfolio
-```
+- **Framework:** Streamlit
+- **Data Manipulation:** Pandas, NumPy
+- **Visualization:** Plotly, Matplotlib, Seaborn
 
-## 📈 **Key Metrics & Insights**
+---
 
-### **Real-time Dashboard Metrics**
-- **TAM Total:** 390M+ people want to learn selected languages
-- **Average ROI:** 3.2x return on investment
-- **Portfolio Revenue:** $3.2M projected Year 2 revenue
-- **Payback Period:** 12 months average
+## 🚀 Getting Started
 
-### **Strategic Recommendations**
-- **🟢 Phase 1:** Spanish, French, German (quick wins)
-- **🟡 Phase 2:** Portuguese, Italian (emerging markets)
-- **🔴 Phase 3:** Mandarin, Japanese (high complexity, high reward)
-- **🟠 Niche Strategy:** Arabic, Turkish (low competition)
+To run this dashboard locally, follow these steps:
 
-## 🏆 **Why Superior to React Dashboards?**
+1.  **Clone the repository:**
+    ```bash
+    git clone <your-repo-url>
+    cd lingopass
+    ```
 
-| Feature | React Dashboard | Streamlit Dashboard |
-|---------|-----------------|-------------------|
-| **Interactivity** | Static charts | Real-time filtering & scenarios |
-| **Simulations** | ❌ None | ✅ Monte Carlo (10K iterations) |
-| **Optimization** | ❌ Manual | ✅ Automated algorithms |
-| **Analytics** | ❌ Basic | ✅ Advanced statistical modeling |
-| **Deployment** | Complex build | One-click Streamlit Cloud |
-| **Updates** | Code + rebuild | Data refresh only |
+2.  **Create and activate a virtual environment (recommended):**
+    ```bash
+    python3 -m venv venv
+    source venv/bin/activate
+    ```
 
-## 🔧 **Technical Stack**
+3.  **Install the dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-- **Framework:** Streamlit 1.28+
-- **Visualization:** Plotly 5.17+ (interactive charts)
-- **Data Processing:** Pandas 2.0+ & NumPy 1.24+
-- **Styling:** Custom CSS with responsive design
-- **Analytics:** Seaborn & Matplotlib for advanced stats
+4.  **Run the Streamlit app:**
+    ```bash
+    streamlit run streamlit_app.py
+    ```
 
-## 📱 **Responsive Design**
+The application will be available at `http://localhost:8501`.
 
-- **Desktop:** Full feature dashboard with sidebar controls
-- **Tablet:** Optimized layout with collapsible sections  
-- **Mobile:** Single-column responsive design
+---
 
-## 🌐 **Live Demo**
+## 📄 License
 
-Experience the dashboard: [your-streamlit-url.streamlit.app](https://your-app.streamlit.app)
+This project is licensed under the MIT License. See the `LICENSE` file for details.
 
 ## 📋 **File Structure**
 
@@ -144,10 +105,6 @@ Experience the dashboard: [your-streamlit-url.streamlit.app](https://your-app.st
 3. Commit changes (`git commit -m 'Add feature'`)
 4. Push to branch (`git push origin feature/enhancement`)
 5. Open Pull Request
-
-## 📄 **License**
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 📞 **Contact**
 
