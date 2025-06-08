@@ -3,6 +3,8 @@ import plotly.graph_objects as go
 import plotly.express as px
 from plotly.subplots import make_subplots
 import pandas as pd
+from pathlib import Path
+import ast
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -118,62 +120,38 @@ COLORS = {
 @st.cache_data
 def load_data():
     """Carrega e estrutura todos os dados do relatório LingoApp"""
-    
+
+    data_dir = Path(__file__).parent / "data"
+
     # Dados principais dos idiomas (corrigidos para demanda de aprendizado)
-    languages_data = {
-        'Idioma': ['Espanhol', 'Francês', 'Alemão', 'Mandarim', 'Japonês', 
-                   'Italiano', 'Português', 'Árabe', 'Turco', 'Indonésio'],
-        'TAM_Milhões': [120, 85, 70, 45, 32, 35, 25, 8, 3, 1.5],  # Demanda de aprendizado
-        'ARPPU_USD': [20, 20, 25, 30, 20, 18, 15, 20, 20, 20],
-        'LTV_USD': [60, 65, 70, 50, 55, 45, 30, 45, 40, 25],
-        'CAC_USD': [20, 20, 20, 25, 22, 16, 15, 30, 18, 15],
-        'Ano1_Revenue_K': [400, 300, 250, 125, 160, 90, 100, 80, 40, 20],
-        'Ano2_Revenue_K': [1200, 720, 600, 400, 480, 216, 300, 240, 120, 60],
-        'Complexidade_Técnica': [2, 2, 3, 8, 8, 2, 1, 9, 4, 3],
-        'Payback_Meses': [8, 6, 7, 18, 15, 12, 10, 24, 20, 30],
-        'Rank_Global': [1, 2, 3, 4, 5, 7, 6, 8, 9, 10],
-        'Investimento_K': [45, 40, 50, 85, 80, 35, 25, 90, 35, 30],
-        'Market_Readiness': [9, 8, 8, 7, 7, 6, 7, 6, 5, 4],
-        'Competição_Level': [9, 8, 8, 6, 5, 7, 6, 4, 3, 2]
-    }
-    
-    df_languages = pd.DataFrame(languages_data)
+    df_languages = pd.read_csv(data_dir / "languages.csv")
+    df_languages.rename(columns={
+        'TAM_Milhoes': 'TAM_Milhões',
+        'Complexidade_Tecnica': 'Complexidade_Técnica',
+        'Competicao_Level': 'Competição_Level'
+    }, inplace=True)
     df_languages['ROI_Ratio'] = df_languages['LTV_USD'] / df_languages['CAC_USD']
     df_languages['ROI_Ano2_K'] = df_languages['Ano2_Revenue_K'] - df_languages['Investimento_K']
     df_languages['Revenue_Growth'] = (df_languages['Ano2_Revenue_K'] / df_languages['Ano1_Revenue_K'] - 1) * 100
-    
+
     # Dados de fases de rollout
-    phases_data = {
-        'Fase': ['Fase 1 (0-6m)', 'Fase 2a (6-9m)', 'Fase 2b (9-12m)', 'Fase 3 (12-15m)'],
-        'Idiomas': [['Espanhol', 'Francês', 'Alemão'], ['Português', 'Italiano'], 
-                   ['Japonês', 'Mandarim'], ['Árabe', 'Turco', 'Indonésio']],
-        'Investimento_K': [135, 60, 165, 155],
-        'Receita_Esperada_K': [950, 506, 565, 260],
-        'Usuários_Projetados': [45000, 17000, 13000, 7000]
-    }
-    df_phases = pd.DataFrame(phases_data)
-    
+    df_phases = pd.read_csv(data_dir / "phases.csv")
+    df_phases.rename(columns={
+        'Usuarios_Projetados': 'Usuários_Projetados'
+    }, inplace=True)
+    df_phases['Idiomas'] = df_phases['Idiomas'].apply(ast.literal_eval)
+
     # Análise competitiva
-    competitors_data = {
-        'Plataforma': ['Duolingo', 'Babbel', 'Busuu', 'LingoApp (Projetado)'],
-        'Market_Share_Pct': [45, 15, 8, 5],
-        'User_Base_Milhões': [83, 10, 15, 2],
-        'Revenue_Milhões': [400, 270, 50, 180],
-        'Idiomas_Count': [40, 14, 12, 10],
-        'Modelo_Negócio': ['Freemium', 'Paid', 'Freemium', 'B2B2B']
-    }
-    df_competitors = pd.DataFrame(competitors_data)
-    
+    df_competitors = pd.read_csv(data_dir / "competitors.csv")
+    df_competitors.rename(columns={'Modelo_Negocio': 'Modelo_Negócio'}, inplace=True)
+
     # Projeção de receita temporal
-    projection_data = {
-        'Período': ['Atual', 'Ano 1', 'Ano 2', 'Ano 3'],
-        'Receita_Base_K': [1000, 2565, 5416, 7200],
-        'Receita_Min_K': [950, 2100, 4500, 5800],
-        'Receita_Max_K': [1050, 3000, 6300, 8600],
-        'Confiança_Pct': [95, 80, 70, 60]
-    }
-    df_projection = pd.DataFrame(projection_data)
-    
+    df_projection = pd.read_csv(data_dir / "projection.csv")
+    df_projection.rename(columns={
+        'Periodo': 'Período',
+        'Confianca_Pct': 'Confiança_Pct'
+    }, inplace=True)
+
     return df_languages, df_phases, df_competitors, df_projection
 
 # ========================================================================================

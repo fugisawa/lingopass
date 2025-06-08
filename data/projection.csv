@@ -1,0 +1,5 @@
+Periodo,Receita_Base_K,Receita_Min_K,Receita_Max_K,Confianca_Pct
+Atual,1000,950,1050,95
+"Ano 1",2565,2100,3000,80
+"Ano 2",5416,4500,6300,70
+"Ano 3",7200,5800,8600,60
