@@ -243,42 +243,69 @@ st.markdown("""
         padding: 20px 24px;
     }
 
-    /* Enhanced Tabs */
+    /* Browser-like Tabs - Clean Navigation Design */
     .stTabs [data-baseweb="tab-list"] {
-        gap: var(--space-sm);
-        background: var(--bg-secondary);
-        padding: var(--space-sm);
-        border-radius: var(--radius-xl);
-        box-shadow: var(--shadow-sm);
-        backdrop-filter: blur(10px);
+        gap: 2px;
+        background: #f1f5f9;
+        padding: 0;
+        border-radius: 0;
+        box-shadow: none;
+        border-bottom: 2px solid #e2e8f0;
+        margin-bottom: 24px;
+        justify-content: flex-start !important;
     }
     
     .stTabs [data-baseweb="tab"] {
-        height: 60px;
-        padding: var(--space-md) var(--space-lg);
-        background: var(--bg-primary);
-        border-radius: var(--radius-lg);
-        border: 2px solid transparent;
-        font-weight: 600;
-        font-size: 16px;
-        transition: all var(--transition);
+        height: 48px;
+        padding: 12px 20px;
+        background: #f8fafc;
+        border-radius: 8px 8px 0 0;
+        border: 1px solid #e2e8f0;
+        border-bottom: none;
+        font-weight: 500;
+        font-size: 15px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        color: #64748b;
+        transition: all 0.2s ease;
         position: relative;
-        overflow: hidden;
+        cursor: pointer !important;
+        text-transform: none;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        text-align: left;
+        min-width: auto;
+        margin-bottom: -1px;
+        user-select: none;
     }
     
     .stTabs [data-baseweb="tab"]:hover {
-        background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
-        border-color: var(--color-primary);
-        transform: translateY(-1px);
-        box-shadow: var(--shadow-md);
+        background: #ffffff;
+        color: #334155 !important;
+        border-color: #cbd5e1;
+        transform: none;
+        box-shadow: none;
     }
     
     .stTabs [aria-selected="true"] {
-        background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-        color: white !important;
-        border: 2px solid var(--color-primary);
-        box-shadow: var(--shadow-lg);
-        transform: translateY(-2px);
+        background: #ffffff;
+        color: #1e293b !important;
+        border: 1px solid #e2e8f0;
+        border-bottom: 2px solid #ffffff;
+        font-weight: 600;
+        z-index: 1;
+        position: relative;
+        box-shadow: none;
+        transform: none;
+        animation: none;
+    }
+    
+    /* Remove all the fancy effects for cleaner browser-like look */
+    .stTabs [data-baseweb="tab"]::before,
+    .stTabs [data-baseweb="tab"]::after,
+    .stTabs [aria-selected="true"]::before,
+    .stTabs [aria-selected="true"]::after {
+        display: none;
     }
 
     /* Tab Headers */
@@ -1207,11 +1234,18 @@ def main():
     main_content = st.container()
     main_content.markdown('<div id="main-content" tabindex="-1"></div>', unsafe_allow_html=True)
     
+    # Navigation Guide
+    st.markdown("""
+    <div style="text-align: left; margin: 0 0 10px 5px; color: #64748b; font-size: 16px; font-weight: 500;">
+        👇 Navegue pelas seções clicando nas abas abaixo
+    </div>
+    """, unsafe_allow_html=True)
+    
     # Enhanced Tab System with Accessibility and Progressive Disclosure
     tab1, tab2, tab3 = st.tabs([
-        "📊 **Executive Summary**", 
-        "🎯 **Strategic Analysis**", 
-        "🔮 **Predictive Analytics**"
+        "Executive summary", 
+        "Strategic analysis", 
+        "Predictive analytics"
     ])
 
     # ========================================================================================
@@ -1274,19 +1308,19 @@ def main():
             {
                 "icon": "🚀",
                 "title": "OPORTUNIDADE CRÍTICA",
-                "content": "**Espanhol** lidera o TAM com 120M pessoas, seguido de **Francês** (95M) e **Alemão** (70M). Português aparece com 25M - foco no mercado brasileiro justifica a priorização.",
+                "content": "<strong>Espanhol</strong> lidera o TAM com 120M pessoas, seguido de <strong>Francês</strong> (95M) e <strong>Alemão</strong> (70M). <strong>Português</strong> aparece com 25M - foco no mercado brasileiro justifica a priorização.",
                 "type": "success"
             },
             {
                 "icon": "⚠️", 
                 "title": "ATENÇÃO NECESSÁRIA",
-                "content": "**Francês** e **Alemão** representam mercados maduros com 95M e 70M respectivamente. Requerem estratégia diferenciada para competir com soluções locais estabelecidas.",
+                "content": "<strong>Francês</strong> e <strong>Alemão</strong> representam mercados maduros com 95M e 70M respectivamente. Requerem estratégia diferenciada para competir com soluções locais estabelecidas.",
                 "type": "warning"
             },
             {
                 "icon": "📈",
                 "title": "CRESCIMENTO ACELERADO",
-                "content": "**Mandarim** (45M) e **Italiano** (35M) oferecem nicho interessante, mas **Japonês** (32M) pode ser mais acessível para primeira expansão asiática.",
+                "content": "Mandarim (45M) e Italiano (35M) oferecem nicho interessante, mas Japonês (32M) pode ser mais acessível para primeira expansão asiática.",
                 "type": "info"
             }
         ]
